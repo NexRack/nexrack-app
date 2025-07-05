@@ -1,0 +1,58 @@
+name: nexrack_app
+description: "Nexrack App"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# Version and build number for your app (format: x.y.z+build, can be overridden in flutter build).
+version: 1.0.0
+
+environment:
+  sdk: ^3.7.2
+
+# List your package dependencies below. Run `flutter pub outdated` to check for updates.
+dependencies:
+  # Flutter SDK dependencies
+  flutter:
+    sdk: flutter
+  # Design System
+  getwidget: ^6.0.0
+  # State management
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.1
+  # Dependency Injection
+  get_it: ^8.0.3
+  # Logging
+  logger: ^2.6.0
+  # Code generation
+  freezed: ^3.1.0
+  freezed_annotation: ^3.1.0
+  # HTTP requests
+  http: ^1.4.0
+  auto_route: ^10.1.0+1
+
+# Dev dependencies
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  bloc_lint: ^0.2.0
+  bloc_test: ^10.0.0
+  json_serializable: ^6.9.5
+  build_runner: ^2.5.4
+
+# The following section is specific to Flutter packages.
+flutter:
+  # The following line ensures the Material Icons font is included so you can use the material Icons class.
+  uses-material-design: true
+
+  # Assets Application
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+
+  # To add custom fonts, add a fonts section in the "flutter" section with a "family" key for the font name and a "fonts" key listing the font assets.
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
