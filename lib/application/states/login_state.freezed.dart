@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginState {
 
- UserModel get user; String? get errorMessage;
+ UserModel get user; bool? get loginSuccessful; bool? get loginFailed; String? get errorMessage;
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $LoginStateCopyWith<LoginState> get copyWith => _$LoginStateCopyWithImpl<LoginSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.user, user) || other.user == user)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.user, user) || other.user == user)&&(identical(other.loginSuccessful, loginSuccessful) || other.loginSuccessful == loginSuccessful)&&(identical(other.loginFailed, loginFailed) || other.loginFailed == loginFailed)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,user,errorMessage);
+int get hashCode => Object.hash(runtimeType,user,loginSuccessful,loginFailed,errorMessage);
 
 @override
 String toString() {
-  return 'LoginState(user: $user, errorMessage: $errorMessage)';
+  return 'LoginState(user: $user, loginSuccessful: $loginSuccessful, loginFailed: $loginFailed, errorMessage: $errorMessage)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $LoginStateCopyWith<$Res>  {
   factory $LoginStateCopyWith(LoginState value, $Res Function(LoginState) _then) = _$LoginStateCopyWithImpl;
 @useResult
 $Res call({
- UserModel user, String? errorMessage
+ UserModel user, bool? loginSuccessful, bool? loginFailed, String? errorMessage
 });
 
 
@@ -62,10 +62,12 @@ class _$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? user = null,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? user = null,Object? loginSuccessful = freezed,Object? loginFailed = freezed,Object? errorMessage = freezed,}) {
   return _then(_self.copyWith(
 user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as UserModel,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as UserModel,loginSuccessful: freezed == loginSuccessful ? _self.loginSuccessful : loginSuccessful // ignore: cast_nullable_to_non_nullable
+as bool?,loginFailed: freezed == loginFailed ? _self.loginFailed : loginFailed // ignore: cast_nullable_to_non_nullable
+as bool?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -160,10 +162,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserModel user,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserModel user,  bool? loginSuccessful,  bool? loginFailed,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoginState() when $default != null:
-return $default(_that.user,_that.errorMessage);case _:
+return $default(_that.user,_that.loginSuccessful,_that.loginFailed,_that.errorMessage);case _:
   return orElse();
 
 }
@@ -181,10 +183,10 @@ return $default(_that.user,_that.errorMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserModel user,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserModel user,  bool? loginSuccessful,  bool? loginFailed,  String? errorMessage)  $default,) {final _that = this;
 switch (_that) {
 case _LoginState():
-return $default(_that.user,_that.errorMessage);case _:
+return $default(_that.user,_that.loginSuccessful,_that.loginFailed,_that.errorMessage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -201,10 +203,10 @@ return $default(_that.user,_that.errorMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserModel user,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserModel user,  bool? loginSuccessful,  bool? loginFailed,  String? errorMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _LoginState() when $default != null:
-return $default(_that.user,_that.errorMessage);case _:
+return $default(_that.user,_that.loginSuccessful,_that.loginFailed,_that.errorMessage);case _:
   return null;
 
 }
@@ -216,10 +218,12 @@ return $default(_that.user,_that.errorMessage);case _:
 
 
 class _LoginState implements LoginState {
-  const _LoginState({required this.user, this.errorMessage});
+  const _LoginState({required this.user, this.loginSuccessful, this.loginFailed, this.errorMessage});
   
 
 @override final  UserModel user;
+@override final  bool? loginSuccessful;
+@override final  bool? loginFailed;
 @override final  String? errorMessage;
 
 /// Create a copy of LoginState
@@ -232,16 +236,16 @@ _$LoginStateCopyWith<_LoginState> get copyWith => __$LoginStateCopyWithImpl<_Log
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.user, user) || other.user == user)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.user, user) || other.user == user)&&(identical(other.loginSuccessful, loginSuccessful) || other.loginSuccessful == loginSuccessful)&&(identical(other.loginFailed, loginFailed) || other.loginFailed == loginFailed)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,user,errorMessage);
+int get hashCode => Object.hash(runtimeType,user,loginSuccessful,loginFailed,errorMessage);
 
 @override
 String toString() {
-  return 'LoginState(user: $user, errorMessage: $errorMessage)';
+  return 'LoginState(user: $user, loginSuccessful: $loginSuccessful, loginFailed: $loginFailed, errorMessage: $errorMessage)';
 }
 
 
@@ -252,7 +256,7 @@ abstract mixin class _$LoginStateCopyWith<$Res> implements $LoginStateCopyWith<$
   factory _$LoginStateCopyWith(_LoginState value, $Res Function(_LoginState) _then) = __$LoginStateCopyWithImpl;
 @override @useResult
 $Res call({
- UserModel user, String? errorMessage
+ UserModel user, bool? loginSuccessful, bool? loginFailed, String? errorMessage
 });
 
 
@@ -269,10 +273,12 @@ class __$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? user = null,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? user = null,Object? loginSuccessful = freezed,Object? loginFailed = freezed,Object? errorMessage = freezed,}) {
   return _then(_LoginState(
 user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as UserModel,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as UserModel,loginSuccessful: freezed == loginSuccessful ? _self.loginSuccessful : loginSuccessful // ignore: cast_nullable_to_non_nullable
+as bool?,loginFailed: freezed == loginFailed ? _self.loginFailed : loginFailed // ignore: cast_nullable_to_non_nullable
+as bool?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

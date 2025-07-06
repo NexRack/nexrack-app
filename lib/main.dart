@@ -1,6 +1,10 @@
+//Flutter dependencies
 import 'package:flutter/material.dart';
+//Internal depeendencies
 import 'package:nexrack_app/core/di/locator.dart';
-import 'package:nexrack_app/presentation/screens/login_screen.dart';
+import 'package:nexrack_app/core/router/app_router.dart';
+
+final _appRouter = AppRouter();
 
 void main() {
   // Inject dependencies before running the app
@@ -15,12 +19,11 @@ class MyApp extends StatelessWidget {
   //TODO fix routing
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+    return MaterialApp.router(
+      title: "Nexrack App",
+      routerConfig: _appRouter.config(
+
       ),
-      home: const LoginScreen(),
     );
   }
 }

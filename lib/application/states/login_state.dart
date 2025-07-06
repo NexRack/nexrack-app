@@ -10,6 +10,8 @@ part 'login_state.freezed.dart';
 abstract class LoginState with _$LoginState {
   const factory LoginState({
     required UserModel user,
+    bool? loginSuccessful,
+    bool? loginFailed,
     String? errorMessage,
   }) = _LoginState;
 }

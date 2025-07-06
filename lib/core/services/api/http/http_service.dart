@@ -1,5 +1,7 @@
+//External dependencies
 import 'package:http/http.dart';
-import 'http_helpers/http_client.dart';
+//Internal dependencies
+import 'package:nexrack_app/core/services/api/http/helpers/http_client.dart';
 
 class HttpService {
 

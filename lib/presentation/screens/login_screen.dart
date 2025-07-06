@@ -1,4 +1,5 @@
 // Flutter dependencies
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +8,7 @@ import 'package:nexrack_app/application/cubits/login_cubit.dart';
 import 'package:nexrack_app/application/states/login_state.dart';
 import 'package:nexrack_app/core/di/locator.dart';
 
+@RoutePage()
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
@@ -14,25 +16,35 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => sl<LoginCubit>(),
-      child: LoginScreenContent(),
+      child: LoginView(),
     );
   }
 }
 
-class LoginScreenContent extends StatelessWidget {
-  const LoginScreenContent({super.key});
+class _LoginListener extends StatelessWidget {
+  const _LoginListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {},
+      child: LoginView(),
+    );
+  }
+}
+
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
-        final cubit = context.read<LoginCubit>();
         return Column(
           children: [
-            Text(cubit.state.user.email),
+            Text(state.user.email),
             ElevatedButton(
-              onPressed: () => cubit.authenticateUser("authenticate", "authenticate"),
+              onPressed: () => context.read<LoginCubit>().authenticateUser("authenticate", "authenticate"),
               child: const Text("Click here"),
             ),
           ],
