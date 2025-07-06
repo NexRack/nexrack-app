@@ -8,6 +8,7 @@ import 'package:getwidget/getwidget.dart';
 //Internal dependencies
 import 'package:nexrack_app/application/cubits/login_cubit.dart';
 import 'package:nexrack_app/application/states/login_state.dart';
+import 'package:nexrack_app/core/services/effects/app_effect_handler.dart';
 import 'package:nexrack_app/presentation/widgets/text/texts.dart';
 import 'package:nexrack_app/core/di/locator.dart';
 
@@ -30,14 +31,41 @@ class _LoginListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.effects.isNotEmpty) {
+          sl<AppEffectHandler>().handleEffects(
+            context,
+            state.effects,
+            context.read<LoginCubit>().clearEffects,
+          );
+        }
+      },
       child: LoginView(),
     );
   }
 }
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  late final TextEditingController loginTextFieldController;
+
+  @override
+  void initState() {
+    super.initState();
+    loginTextFieldController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    loginTextFieldController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +91,26 @@ class LoginView extends StatelessWidget {
                     TextHeadlineMedium(text: "Glad to see you!"),
                     SizedBox(height: 100.h),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 30.w),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 12.h,
+                        horizontal: 35.w,
+                      ),
+                      child: GFTextField(
+                        controller: loginTextFieldController,
+                        color: GFColors.LIGHT,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 12.h,
+                        horizontal: 30.w,
+                      ),
                       child: GFButton(
                         text: "Login",
                         onPressed:
                             () => context.read<LoginCubit>().authenticateUser(
-                              "authenticate",
-                              "authenticate",
+                              loginTextFieldController.text,
                             ),
                         textStyle: TextTheme.of(context).bodyLarge,
                         color: GFColors.LIGHT,
@@ -78,11 +119,17 @@ class LoginView extends StatelessWidget {
                         fullWidthButton: true,
                       ),
                     ),
-
                   ],
                 ),
               ),
-              TextTitleSmall(text: "Timots and Co. © ${DateTime.now().year}"),
+              Column(
+                children: [
+                  TextTitleSmall(
+                    text: "Timots, Kevs and Co. © ${DateTime.now().year}",
+                  ),
+                  SizedBox(height: 10.h),
+                ],
+              ),
             ],
           ),
         );

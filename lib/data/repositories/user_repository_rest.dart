@@ -9,7 +9,7 @@ class UserRepositoryRest implements UserRepository {
   final Logger _logger = sl<Logger>();
 
   @override
-  Future<void> authenticateUser(String email, String password) async {
-    _logger.i("Calling REST API to authenticate user with email: $email");
+  Future<void> authenticateUser(String name) async {
+    _logger.i("Calling REST API to authenticate user with email: $name");
   }
 }

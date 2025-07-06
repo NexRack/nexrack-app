@@ -5,9 +5,7 @@
 /// - [name]: The user's display name.
 /// - [email]: The user's email address.
 abstract class User {
-  final String id;
   final String name;
-  final String email;
 
-  User({required this.id, required this.name, required this.email});
+  User({required this.name});
 }
