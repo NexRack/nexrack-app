@@ -7,7 +7,6 @@ import 'package:nexrack_app/application/cubits/login_cubit.dart';
 import 'package:nexrack_app/core/log/logger.dart';
 import 'package:nexrack_app/core/services/api/http/http_service.dart';
 import 'package:nexrack_app/data/repositories/repositories.dart';
-import 'package:nexrack_app/domain/repositories/repositories.dart';
 
 final sl = GetIt.instance;
 

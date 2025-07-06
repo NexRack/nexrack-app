@@ -5,8 +5,7 @@ import 'package:logger/logger.dart';
 import 'package:nexrack_app/core/di/locator.dart';
 import 'package:nexrack_app/domain/repositories/user_repository.dart';
 
-class UserRepositoryRest implements UserRepository{
-
+class UserRepositoryRest implements UserRepository {
   final Logger _logger = sl<Logger>();
 
   @override
