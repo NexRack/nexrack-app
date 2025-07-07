@@ -23,11 +23,11 @@ mixin EffectMixin<State> on Cubit<State> {
     if (state is HasEffects) {
       return (state as HasEffects).stateEffects;
     }
-    throw StateError('State must implement HasEffects');
+    throw StateError('Cubit/Bloc State must implement HasEffects');
   }
 
   void showSnackBarEffect({required String message}) {
-    logger.i("ShowSnackba with message: $message");
+    logger.i("ShowSnackbar with message: $message");
     addEffect(ShowSnackbarEffect(message));
   }
 

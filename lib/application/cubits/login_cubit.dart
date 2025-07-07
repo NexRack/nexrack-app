@@ -30,7 +30,7 @@ class LoginCubit extends Cubit<LoginState> with EffectMixin<LoginState> {
       _logger.i("Authenticating user with name: $name");
       await _userRepository.authenticateUser(name);
       updateUserName(name);
-      replaceRouteEffect(path: "/test");
+      replaceRouteEffect(path: "/home");
     } catch (e, stackTrace) {
       _logger.e("Authentication failed", stackTrace: stackTrace);
       showSnackBarEffect(message: "Authentication failed");

@@ -1,6 +1,8 @@
 // Flutter dependencies
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
+//External dependencies
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
@@ -40,19 +42,19 @@ class _LoginListener extends StatelessWidget {
           );
         }
       },
-      child: LoginView(),
+      child: _LoginView(),
     );
   }
 }
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class _LoginView extends StatefulWidget {
+  const _LoginView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<_LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends State<_LoginView> {
   late final TextEditingController loginTextFieldController;
 
   @override

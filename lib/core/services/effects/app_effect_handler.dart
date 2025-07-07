@@ -31,15 +31,15 @@ class AppEffectHandler {
   }
 
   void _handleShowSnackbarEffect(ShowSnackbarEffect effect) {
-    _logger.i("Handling ShowSnackbarEffect");
+    _logger.d("Handling ShowSnackbarEffect");
   }
 
   void _handleUnkownEffect(AppEffect effect) {
-    _logger.i("Unimplemented Effect Handler for effect: $effect");
+    _logger.e("Unimplemented Effect Handler for effect: $effect");
   }
 
   void _handleReplaceRouteEffect(ReplaceRouteEffect effect, BuildContext context) {
-    _logger.i("Handling ReplaceRouteEffect");
-    AutoRouter.of(context).replacePath(effect.routeName);
+    _logger.d("Handling ReplaceRouteEffect");
+    AutoRouter.of(context).pushPath(effect.routeName);
   }
 }

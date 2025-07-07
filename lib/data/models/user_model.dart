@@ -22,3 +22,13 @@ abstract class UserModel with _$UserModel implements User {
   @override
   Map<String, dynamic> toJson() => _$UserModelToJson(this as _UserModel);
 }
+
+class UserConverter implements JsonConverter<User, Map<String, dynamic>> {
+  const UserConverter();
+
+  @override
+  User fromJson(Map<String, dynamic> json) => UserModel.fromJson(json);
+
+  @override
+  Map<String, dynamic> toJson(User object) => (object as UserModel).toJson();
+}

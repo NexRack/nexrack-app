@@ -9,39 +9,56 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:nexrack_app/presentation/screens/login_screen.dart' as _i1;
+import 'package:auto_route/auto_route.dart' as _i4;
+import 'package:nexrack_app/presentation/screens/home_screen.dart' as _i1;
+import 'package:nexrack_app/presentation/screens/login_screen.dart' as _i2;
 import 'package:nexrack_app/presentation/screens/root_scaffold_screen.dart'
-    as _i2;
+    as _i3;
 
 /// generated route for
-/// [_i1.LoginScreen]
-class LoginRoute extends _i3.PageRouteInfo<void> {
-  const LoginRoute({List<_i3.PageRouteInfo>? children})
-    : super(LoginRoute.name, initialChildren: children);
+/// [_i1.HomeScreen]
+class HomeRoute extends _i4.PageRouteInfo<void> {
+  const HomeRoute({List<_i4.PageRouteInfo>? children})
+    : super(HomeRoute.name, initialChildren: children);
 
-  static const String name = 'LoginRoute';
+  static const String name = 'HomeRoute';
 
-  static _i3.PageInfo page = _i3.PageInfo(
+  static _i4.PageInfo page = _i4.PageInfo(
     name,
     builder: (data) {
-      return const _i1.LoginScreen();
+      return const _i1.HomeScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i2.RootScaffoldScreen]
-class RootScaffoldRoute extends _i3.PageRouteInfo<void> {
-  const RootScaffoldRoute({List<_i3.PageRouteInfo>? children})
+/// [_i2.LoginScreen]
+class LoginRoute extends _i4.PageRouteInfo<void> {
+  const LoginRoute({List<_i4.PageRouteInfo>? children})
+    : super(LoginRoute.name, initialChildren: children);
+
+  static const String name = 'LoginRoute';
+
+  static _i4.PageInfo page = _i4.PageInfo(
+    name,
+    builder: (data) {
+      return const _i2.LoginScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i3.RootScaffoldScreen]
+class RootScaffoldRoute extends _i4.PageRouteInfo<void> {
+  const RootScaffoldRoute({List<_i4.PageRouteInfo>? children})
     : super(RootScaffoldRoute.name, initialChildren: children);
 
   static const String name = 'RootScaffoldRoute';
 
-  static _i3.PageInfo page = _i3.PageInfo(
+  static _i4.PageInfo page = _i4.PageInfo(
     name,
     builder: (data) {
-      return const _i2.RootScaffoldScreen();
+      return const _i3.RootScaffoldScreen();
     },
   );
 }
