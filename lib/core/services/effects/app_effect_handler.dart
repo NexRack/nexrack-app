@@ -1,6 +1,7 @@
 // External dependencies
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 // Internal dependencies
 import 'package:nexrack_app/application/effects/app_effects.dart';

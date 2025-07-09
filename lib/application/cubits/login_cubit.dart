@@ -7,15 +7,20 @@ import 'package:logger/logger.dart';
 import 'package:nexrack_app/application/cubits/effect_mixin.dart';
 import 'package:nexrack_app/application/states/login_state.dart';
 import 'package:nexrack_app/core/di/locator.dart';
+import 'package:nexrack_app/core/notifier/user_notifier.dart';
 import 'package:nexrack_app/data/models/models.dart';
 import 'package:nexrack_app/data/repositories/repositories.dart';
 import 'package:nexrack_app/application/effects/app_effects.dart';
 
 class LoginCubit extends Cubit<LoginState> with EffectMixin<LoginState> {
+  // Repositories
   final UserRepositoryRest _userRepository;
   final Logger _logger = sl<Logger>();
 
-  LoginCubit(this._userRepository) : super(LoginState(user: UserModel.empty()));
+  // Notifiers / Subscriptions
+  final UserNotifier _userNotifier;
+
+  LoginCubit(this._userRepository, this._userNotifier) : super(LoginState(user: UserModel.empty()));
 
   @override
   LoginState copyStateWithEffects(LoginState state, List<AppEffect> effects) {
@@ -39,6 +44,7 @@ class LoginCubit extends Cubit<LoginState> with EffectMixin<LoginState> {
 
   void updateUserName(String email) {
     _logger.i("Updating user name");
+    _userNotifier.updateUser(state.user.copyWith(name: email));
     emit(state.copyWith(user: state.user.copyWith(name: email)));
   }
 
